@@ -1,24 +1,20 @@
 import * as actionTypes from './actions'
 
 const initialState = {
-    clients: {
-        name: '',
-        method: '',
-        date: '',
-        post: '',
-    },
+    name: "Jakub",
+    surname: "",
     isAutenth: false,
 };
 
 const reducer = (state = initialState, action) => {
     switch ( action.type ) {
         case actionTypes.ADD_CLIENT:
+            const newClient = {
+                ...action.clientName
+            }
             return {
                 ...state,
-                clients: {
-                    ...state.clients,
-                    [action.clientAtt]: state.clients[action.clientAtt].inputText,
-                }
+                name: state.name.concat()
             };
         case actionTypes.TOGGLE_AUTH:
             return {
