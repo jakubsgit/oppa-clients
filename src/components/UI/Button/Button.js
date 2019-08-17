@@ -12,6 +12,7 @@ const Button = (props) => {
     `
     return ( 
         <Button
+            className="main-button"
             disabled={props.disabled}
             onClick={props.clicked}>
                 {props.children}
