@@ -3,7 +3,8 @@ import {connect} from 'react-redux';
 
 import Button from '../../components/UI/Button/Button';
 import Input from '../../components/UI/Input.js/Input';
-import classes from './Auth.css'
+import classes from './Auth.css';
+import * as actions from '../../store/actions/index';
 
 class Auth extends Component {
     state = {
@@ -105,6 +106,18 @@ class Auth extends Component {
         )
     }
 }
+const mapStateToProps = state => {
+    return {
+        loading: state.auth.loading,
+        token: state.auth.token,
+        userId: state.auth.userId,
+        error: state.auth.error
+    }
+}
+const mapDispatchToProps = dispatch => {
+    return {
+        onAuth: (email, password, isSignUp) => dispatch(actions.auth(email, password, isSignUp))
+    }
+}
 
-
-export default connect()(Auth);
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);
